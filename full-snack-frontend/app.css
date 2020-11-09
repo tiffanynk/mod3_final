@@ -22,7 +22,17 @@ html, body {
     font-family: sans-serif;
 }
 
+div {
+    display: flex;
+}
+
 h1 {
     font-size: 40px;
-    transform: translateX(-180%);
+    /* transform: translateX(-180%); */
+}
+
+
+button {
+    border-style: none;
+    flex-direction: column;
 }
