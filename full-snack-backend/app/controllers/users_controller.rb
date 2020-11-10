@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :verify_auth, only: [:index]
+    skip_before_action :verify_auth, only: [:create]
     #can put :update and :destroy in limited routes
 
     def index

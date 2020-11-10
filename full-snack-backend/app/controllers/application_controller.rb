@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+    before_action :verify_auth
+
     def verify_auth
         if !request.headers['Authorization']
             render json: {message: 'Unauthorized'}, status: :unauthorized
@@ -10,8 +12,8 @@ class ApplicationController < ActionController::API
                 payload = decoded_token.first
                 user_id = payload['user_id']
                 @user = User.find(user_id)
-                
-                render json: {mesage: 'oh shit'}
+
+                render json: {mesage: 'oh shit it worked'}
             rescue
                 render json: {message: 'Unauthorized'}, status: :unauthorized
             end

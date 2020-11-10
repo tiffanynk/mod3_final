@@ -26,10 +26,14 @@ function createNewUser(event) {
     })
     .then(response => {
         if (response.status >= 400) throw new Error ('Something went wrong!')
-
-        window.location.href = ''
     })
-    .catch(error => console.error(error.message));
+    .catch(error => {
+        console.error(error.message)
+        const regErrorMessage = document.querySelector('.reg-error-message');
+
+        regErrorMessage.textContent = error.message;
+        regErrorMessage.classList.remove('hidden');
+    });
 
     event.target.reset()
 }
@@ -51,7 +55,25 @@ function loginUser(event) {
         body: JSON.stringify(existingUser)
     })
     .then(response => response.json())
-    .then(user => console.log(user));
+    .then(result => {
+        if (!result.token) {
+            const loginErrorMessage = document.querySelector('.login-error-message');
+    
+            loginErrorMessage.textContent = result.message;
+            loginErrorMessage.classList.remove('hidden');
+        } else {
+            console.log(result)
+            localStorage.setItem('token', result.token)
+            window.location.href = '/profile.html'
+        }
+    })
+    .catch(error => {
+        console.error(error.message)
+        const loginErrorMessage = document.querySelector('.login-error-message');
+
+        loginErrorMessage.textContent = error.message;
+        loginErrorMessage.classList.remove('hidden');
+    })
 
     event.target.reset()
 }

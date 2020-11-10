@@ -32,7 +32,14 @@ h1 {
 }
 
 
-button {
-    border-style: none;
-    flex-direction: column;
+.reg-error-message {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
+
+input {
+    display: block;
 }

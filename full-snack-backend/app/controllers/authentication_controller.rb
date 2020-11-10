@@ -1,4 +1,6 @@
 class AuthenticationController < ApplicationController
+    skip_before_action :verify_auth, only: [:login]
+
     def login
         @user = User.find_by(username: params[:username])
 
@@ -10,7 +12,7 @@ class AuthenticationController < ApplicationController
 
             render json: {token: @token}, status: :ok
         else
-            render json: {error: @user.errors.full_messages}, status: :unauthorized
+            render json: {message: 'Login credentials not found'}, status: :unauthorized
         end
     end
 end
