@@ -116,8 +116,10 @@ function checksRowFor4() {
         let decidedSpook = squares[i].style.backgroundImage
         const isEmpty = squares[i].style.backgroundImage === ''
 
-        const notValid = [5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31, 37, 38, 39, 45, 46, 47, 53, 54, 55]
-        if (notValid.includes(i)) continue
+        //array of all indexes that are not valid, i don't want my row of 3 to start on any of these indicies
+        //fixes matches when a row starts at left or side or if half of its body is at halfway point
+        const invalidIndex = [5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31, 37, 38, 39, 45, 46, 47, 53, 54, 55]
+        if (invalidIndex.includes(i)) continue
 
         if (rowOfFour.every(index => squares[index].style.backgroundImage === decidedSpook && !isEmpty)) {
             score += 4
@@ -154,8 +156,8 @@ function checksRowFor3() {
         let decidedSpook = squares[i].style.backgroundImage
         const isEmpty = squares[i].style.backgroundImage === ''
 
-        const notValid = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55]
-        if (notValid.includes(i)) continue
+        const invalidIndex = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55]
+        if (invalidIndex.includes(i)) continue
 
         if(rowOfThree.every(index => squares[index].style.backgroundImage === decidedSpook && !isEmpty)) {
             score += 3
