@@ -13,7 +13,9 @@ class UsersController < ApplicationController
         if @user.save
             render json: @user, status: :created
         else
-            render json: {error: @user.errors.full_messages}, status: :unauthorized
+            render json: {
+                error: @user.errors.messages.values.join(', ')
+                }, status: :unauthorized
         end
     end
 

@@ -8,27 +8,21 @@
         <script defer src="index.js"></script>
     </head>
     <body>
-        <div class="image-box" style="--image-url: url(https://images.unsplash.com/photo-1532917615519-d37f925f2411?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)">
-
-            <form class="register">
-                <label>Username</label>
-                <input type="text" name="username" placeholder="Username"/>
-                <label>Password</label>
-                <input type="password" name="password"/>
-                <input type="submit" value="Register"/>
-                <button type="reset">Reset</button>
-            </form>
-            <p class="reg-error-message hidden"></p>
-
-            <form class="login">
-                <label>Username</label>
-                <input type="text" name="username" placeholder="Username"/>
-                <label>Password</label>
-                <input type="password" name="password"/>
-                <input type="submit" value="Login"/>
-                <button type="reset">Reset</button>
-            </form>
-            <p class="login-error-message hidden"></p>
+        <header>
+            <nav>
+                <ul>
+                    <li class="login-link">
+                    </li>
+                    <li>
+                        <a href="/signup.html">Sign up</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="score-board">
+            <h3>score</h3>
+            <h1 id="score"></h1>
         </div>
+        <div class="grid"></div>
     </body>
 </html>
