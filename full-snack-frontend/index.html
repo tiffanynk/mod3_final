@@ -8,6 +8,7 @@
         <script defer src="index.js"></script>
     </head>
     <body>
+        <div class="wrapper">
         <header>
             <nav>
                 <ul>
@@ -19,10 +20,21 @@
                 </ul>
             </nav>
         </header>
-        <div class="score-board">
-            <h3>score</h3>
-            <h1 id="score"></h1>
+        <div class='game-stats'>
+            <div class="high-score">
+                <h3>High Score</h3>
+                <h1 id="high-score"></h1>
+            </div>
+            <div class="score-board">
+                <h3>score</h3>
+                <h1 id="score"></h1>
+            </div>
+            <div class="move-counter">
+                <h3>Moves Left</h3>
+                <h1 id="moves-counter"></h1>
+            </div>
         </div>
         <div class="board"></div>
+        </div>
     </body>
 </html>

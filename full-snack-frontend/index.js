@@ -5,9 +5,12 @@ const loginURL = `${baseURL}/login`;
 const loginLink = document.querySelector('.login-link');
 const board = document.querySelector('.board');
 const scoreboard = document.getElementById('score');
+const turnCounter = document.getElementById('moves-counter');
 const width = 8;
 let cells = [];
 let score = 0;
+let turnCount = 30;
+
 
 const spookyIcons = [
     'url(images/candy-corn.png)',
@@ -26,6 +29,7 @@ function createBoard() {
         cell.setAttribute('draggable', true)
         cell.setAttribute('id', i)
         scoreboard.textContent = 0
+        turnCounter.textContent = 30
         let randomSpook = Math.floor(Math.random() * spookyIcons.length)
         cell.style.backgroundImage = spookyIcons[randomSpook]
         board.appendChild(cell)
@@ -65,27 +69,6 @@ function dragDrop() {
     cellIdBeingReplaced = parseInt(this.id)
     this.style.backgroundImage = spookBeingDragged
     cells[cellIdBeingDragged].style.backgroundImage = spookBeingReplaced
-}
-
-function dragEnd() {
-    //defining moves so that icons can only move one space from its current position
-    let validMoves = [
-        cellIdBeingDragged - 1 , 
-        cellIdBeingDragged - width, 
-        cellIdBeingDragged + 1, 
-        cellIdBeingDragged + width
-    ]
-
-    let validMove = validMoves.includes(cellIdBeingReplaced)
-
-    if (cellIdBeingReplaced && validMove) {
-        cellIdBeingReplaced = null
-    } else if (cellIdBeingReplaced && !validMove) {
-        cells[cellIdBeingReplaced].style.backgroundImage = spookBeingReplaced
-        cells[cellIdBeingDragged].style.backgroundImage = spookBeingDragged
-    } else {
-        cells[cellIdBeingDragged].style.backgroundImage = spookBeingDragged
-    }
 }
 
 function dropSpooks() {
@@ -133,7 +116,6 @@ function checksColumnFor4() {
         let columnOfFour = [i, i + width, i + width * 2, i + width * 3]
         let decidedSpook = cells[i].style.backgroundImage
         const isEmpty = cells[i].style.backgroundImage === ''
-
         if (columnOfFour.every(i => cells[i].style.backgroundImage === decidedSpook && !isEmpty)) {
             score += 4
             scoreboard.innerHTML = score
@@ -152,7 +134,6 @@ function checksRowFor3() {
 
         const invalidIndex = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55]
         if (invalidIndex.includes(i)) continue
-
         if(rowOfThree.every(i => cells[i].style.backgroundImage === decidedSpook && !isEmpty)) {
             score += 3
             scoreboard.innerHTML = score
@@ -179,10 +160,43 @@ function checksColumnFor3() {
     }
 }
 
+// let garbage = 0;
+function dragEnd() {
+    //defining moves so that icons can only move one space from its current position
+    let validMoves = [
+        cellIdBeingDragged - 1 , 
+        cellIdBeingDragged - width, 
+        cellIdBeingDragged + 1, 
+        cellIdBeingDragged + width
+    ]
+
+    let validMove = validMoves.includes(cellIdBeingReplaced)
+
+    if (cellIdBeingReplaced && validMove) {
+        cellIdBeingReplaced = null
+    } else if (cellIdBeingReplaced && !validMove) {
+        cells[cellIdBeingReplaced].style.backgroundImage = spookBeingReplaced
+        cells[cellIdBeingDragged].style.backgroundImage = spookBeingDragged
+    } else {
+        cells[cellIdBeingDragged].style.backgroundImage = spookBeingDragged
+    }
+
+    // checksRowFor4()
+    // checksColumnFor4()
+    // checksRowFor3()
+    // checksColumnFor3()
+    decrementTurnCount()
+}
+
+function decrementTurnCount() {
+    turnCount -= 1
+    turnCounter.innerHTML =`${turnCount}`
+}
+
 window.setInterval(function() {
     checksRowFor4()
     checksColumnFor4()
     checksRowFor3()
     checksColumnFor3()
     dropSpooks()
-  }, 100);
+  }, 50);

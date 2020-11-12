@@ -47,20 +47,41 @@ h1 {
     background-color: white;
 }
 
-.score-board {
-  background-color: rgb(242, 176, 255);
-  border-radius: 10px;
-  margin-top: 210px;
-  margin-left: 200px;
-  margin-bottom: 450px;
-  min-width: 200px;
+.game-stats {
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+.high-score {
+    background-color: #f2b0ff;
+    border-radius: 15px;
+    width: 40%;
+    height: 40%;
+    text-align: center;
+    background-image: linear-gradient(#dbb6ff, #dbb6ff);
+    box-shadow: 0 2px 4px #00000080 inset, 0 1px 0 #fff;
+    color: #6a6056;
+    flex-basis: content;
+}
+
+.score-board {
+  background-color: #f2b0ff;
+  border-radius: 15px;
+  width: 40%;
+  height: 40%;
   text-align: center;
   background-image: linear-gradient(#dbb6ff, #dbb6ff);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) inset, 0 1px 0 #fff;
+  box-shadow: 0 2px 4px #00000080 inset, 0 1px 0 #fff;
   color: #6a6056;
 }
+
+.move-counter {
+    background-color: #f2b0ff;
+    border-radius: 15px;
+    width: 40%;
+    height: 40%;
+    text-align: center;
+    background-image: linear-gradient(#dbb6ff, #dbb6ff);
+    box-shadow: 0 2px 4px #00000080 inset, 0 1px 0 #fff;
+    color: #6a6056;
+  }

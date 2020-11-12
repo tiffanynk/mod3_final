@@ -2,8 +2,19 @@ const baseURL = 'http://localhost:3000';
 const usersURL = `${baseURL}/users`;
 
 const register = document.querySelector('.register');
+const togglePassword = document.querySelector('#togglePassword');
+const password = document.querySelector('#password');
 
 register.addEventListener('submit', createNewUser);
+
+togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+
 
 function createNewUser(event) {
     event.preventDefault()
