@@ -7,7 +7,7 @@ body {
     display: flex;
   }
 
-.grid {
+.board {
     height: 560px;
     min-width: 560px;
     display: flex;
@@ -21,7 +21,7 @@ body {
     color: #887b6c;
 }
 
-.square {
+.cell {
     height: 70px;
     width: 70px;
     background-repeat: no-repeat;
