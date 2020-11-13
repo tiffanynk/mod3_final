@@ -9,25 +9,29 @@
         <script defer src="signup.js"></script>
     </head>
     <body>
-        <div>
+        <nav class="flex justify-between align-center">
             <img src="images/monster-match.png" alt="spook-smash-logo">
-            <a href="/index.html"><buton style="font-size: 48px" id="back-button">
+            <a href="/index.html">
+                <button style="font-size: 48px" id="back-button">
                 <i class="far fa-arrow-alt-circle-left"></i>
-            </buton></a>
-        </div>
-        
-            <form class="register">
+                </button>
+            </a>
+        </nav>
+        <h1>Register</h1>
+        <section class="flex justify-center">
+            <form class="flex flex-direction-column justify-between register">
                 <label class="hidden">Username</label>
-                <input type="text" name="username" placeholder="Username"/>
+                <input type="text" name="username" id="username-input" placeholder="Username"/>
                 <label class="hidden">Password</label>
-                <div class="container">
-                    <input type="password" name="password"
-                    id="password" placeholder="Password"/>
-                <i class="fa fa-fw fa-eye field_icon toggle-password" id="togglePassword"></i>
+                <input type="password" name="password"
+                id="password-input" placeholder="Password"/>
+                    <!-- <i class="fa fa-fw fa-eye field_icon toggle-password" id="togglePassword"></i> -->
+                <div class="flex justify-evenly button-container">
+                    <input id="register" type="submit" value="Register"/>
+                    <button id="reset" type="reset">Reset</button>
                 </div>
-                <input type="submit" value="Register"/>
-                <button type="reset">Reset</button>
             </form>
             <p class="reg-error-message hidden"></p>
+        </section>
     </body>
 </html>

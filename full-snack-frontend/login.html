@@ -9,27 +9,29 @@
         <script defer src="login.js"></script>
     </head>
     <body>
-        <div>
-            <img src="images/monster-match.png" alt="spook-smash-logo">
+        <nav class="flex justify-between align-center">
             <a href="/index.html">
-                <buton style="font-size: 48px" id="back-button">
-                <i class="far fa-arrow-alt-circle-left"></i>
-                </buton>
+                <button style="font-size: 48px" id="back-button">
+                    <i class="far fa-arrow-alt-circle-left"></i>
+                </button>
             </a>
-        </div>
+                <img class="logo" src="images/monster-match.png" alt="spook-smash-logo">
+        </nav>
         <h1>Login</h1>
-        <section>
-            <form class="login">
+        <section class="flex justify-center">
+            <form class="flex-direction-column justify-center login">
                 <label class="hidden">Username</label>
                 <input type="text" name="username" placeholder="Username"/>
                 <label class="hidden">Password</label>
                 <div class="container">
                     <input type="password" name="password"
                     id="password" placeholder="Password"/>
-                <i class="fa fa-fw fa-eye field_icon toggle-password" id="togglePassword"></i>
+                    <i class="fa fa-fw fa-eye field_icon toggle-password" id="togglePassword"></i>
                 </div>
-                <input type="submit" value="Login"/>
-                <button type="reset">Reset</button>
+                <div class="flex justify-evenly button-container">
+                    <input id="login" type="submit" value="Login"/>
+                    <button id="reset" type="reset">Reset</button>
+                </div>
             </form>
         </section>
     </body>

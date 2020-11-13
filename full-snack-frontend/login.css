@@ -3,46 +3,67 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: "Poppins", sans-serif;
   }
   
   body {
     width: 100%;
     min-height: 100vh;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
+
+/* flex directions */
+.flex {
+    display: flex;
+}
+
+
+.align-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+/* additional styling */
+.logo {
+    width: 300px;
+}
+
+nav {
+    padding: 30px 30px 30px 30px;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
 
 .login {
     background-color: #996acc;
-    width: 100%;
-    max-width: 500px;
     padding: 50px 70px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  
     border-radius: 20px;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     color: gray;
-}
-div {
-    display: flex;
 }
 
 .container i {
     margin-left: -20px;
     cursor: pointer;
 }
-
-h1 {
-    font-size: 40px;
-}
-
 
 .reg-error-message {
     color: red;
@@ -52,6 +73,9 @@ h1 {
     display: none;
 }
 
-input {
-    display: block;
+#login, #reset {
+    border-style: none;
+    border-radius: 8px;
+    padding: 10px;
 }
+
