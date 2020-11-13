@@ -2,12 +2,13 @@ const baseURL = 'http://localhost:3000'
 const usersURL = `${baseURL}/users`;
 const loginURL = `${baseURL}/login`;
 
-const loginLink = document.querySelector('#login-link');
+const signUpLink = document.querySelector('.sign-up-link')
+const toggleLogin = document.querySelector('.toggle-login');
 const board = document.querySelector('.board');
 const highScoreboard = document.querySelector('#high-score');
 const scoreboard = document.getElementById('score');
 const turnCounter = document.getElementById('moves-counter');
-const resetButton = document.querySelector('.reset-button')
+const newGameButton = document.querySelector('.new-game-button')
 const width = 8;
 let cells = [];
 let score = 0;
@@ -43,6 +44,7 @@ function createBoard() {
 }
 
 createBoard()
+setLogin()
 
 // Dragging the Spooks
 let spookBeingDragged
@@ -50,7 +52,7 @@ let spookBeingReplaced
 let cellIdBeingDragged
 let cellIdBeingReplaced
 
-resetButton.addEventListener('click', newGame)
+newGameButton.addEventListener('click', newGame)
 cells.forEach(cell => cell.addEventListener('dragstart', dragStart))
 cells.forEach(cell => cell.addEventListener('dragend', dragEnd))
 cells.forEach(cell => cell.addEventListener('dragover', dragOver))
@@ -61,6 +63,7 @@ function newGame() {
     board.innerHTML = ''
     createBoard()
 }
+
 function dragStart(){
     spookBeingDragged = this.style.backgroundImage
     cellIdBeingDragged = parseInt(this.id)
@@ -217,22 +220,28 @@ function gameOver(turnCount) {
 }
 
 window.setInterval(function() {
-    // checksRowFor4()
-    // checksColumnFor4()
-    // checksRowFor3()
-    // checksColumnFor3()
     dropSpooks()
   }, 50);
 
 
 function setLogin(){
         if (token === null) {
-            loginLink.innerHTML = `<a href='/login.html'>Login</a>`
+            toggleLogin.innerHTML = `
+                <a id='sign-up-button' href='./sign-up.html'></a>
+                <a id='login-button' href='./login.html'></a>
+            `
         } else setLogout()
 }
 
 function setLogout(){
-    loginLink.innerHTML = `<a href='/index.html'>Logout</a>`
+    toggleLogin.innerHTML = `
+        <a id='logout-button' href='/index.html'></a>
+    `
+    let logoutButton = document.querySelector('#logout-button')
+    logoutButton.addEventListener('click', logout)
 }
 
-setLogin()
+function logout() {
+    localStorage.removeItem('token')
+    setLogin()
+}
