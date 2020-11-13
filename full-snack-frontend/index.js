@@ -227,7 +227,7 @@ window.setInterval(function() {
 function setLogin(){
         if (token === null) {
             toggleLogin.innerHTML = `
-                <a id='sign-up-button' href='./sign-up.html'></a>
+                <a id='sign-up-button' href='./signup.html'></a>
                 <a id='login-button' href='./login.html'></a>
             `
         } else setLogout()
