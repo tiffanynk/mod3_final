@@ -1,19 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+    font-family: "Poppins", sans-serif;
+}
 body {
-    background-image: url("images/cute-haunted-house.png");
-    background-repeat: no-repeat;
-    background-size: 51rem;
     font-family: sans-serif;
-    max-width: 100vh;
-    display: flex;
+    max-width: 100vw;
+    max-height: 100vh;
   }
+
 
 .board {
     height: 560px;
-    min-width: 560px;
+    width: 560px;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 400px;
-    margin-top: 200px;
     background-color: rgba(109, 127, 151, 0.5);
     padding:5px;
     border-radius: 10px;
@@ -32,43 +33,41 @@ li {
 }
 
 h3 {
- font-family: "Montserrat", sans-serif;
- text-transform: uppercase;
- margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #282828;
+    margin: 5px;
+    margin-bottom: -10px;
 }
 
 h1 {
- font-family: "Montserrat", sans-serif;
- text-transform: uppercase;
- margin-top: -10px;
+    text-transform: uppercase;
 }
-
-.invisible {
-    background-color: white;
-}
-
 .game-stats {
+    display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 20vh;
 }
 
 .high-score {
     background-color: #f2b0ff;
     border-radius: 15px;
-    width: 40%;
-    height: 40%;
+    width: 100%;
+    /* height: 10%; */
+    /* padding: 10px; */
     text-align: center;
     background-image: linear-gradient(#dbb6ff, #dbb6ff);
     box-shadow: 0 2px 4px #00000080 inset, 0 1px 0 #fff;
     color: #6a6056;
-    flex-basis: content;
 }
 
 .score-board {
   background-color: #f2b0ff;
   border-radius: 15px;
-  width: 40%;
-  height: 40%;
+  width: 100%;
+  /* height: 10%; */
+  /* padding: 10px; */
   text-align: center;
   background-image: linear-gradient(#dbb6ff, #dbb6ff);
   box-shadow: 0 2px 4px #00000080 inset, 0 1px 0 #fff;
@@ -78,10 +77,60 @@ h1 {
 .move-counter {
     background-color: #f2b0ff;
     border-radius: 15px;
-    width: 40%;
-    height: 40%;
+    width: 100%;
+    /* height: 10%; */
+    /* padding: 10px; */
     text-align: center;
     background-image: linear-gradient(#dbb6ff, #dbb6ff);
     box-shadow: 0 2px 4px #00000080 inset, 0 1px 0 #fff;
     color: #6a6056;
   }
+
+
+
+
+
+
+/* flex directions */
+.flex {
+    display: flex;
+}
+
+
+.align-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+/* additional styling */
+nav {
+    padding: 0px 0px 30px 30px;
+}
+.nav-link-container {
+    width: 15%;
+}
+
+.high-score-container, .game-data-container {
+    border: 2px solid pink;
+    width: 20%;
+    align-self: flex-start;
+}
+
+.game-data-container {
+    height: 60vh;
+}

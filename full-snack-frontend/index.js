@@ -2,15 +2,20 @@ const baseURL = 'http://localhost:3000'
 const usersURL = `${baseURL}/users`;
 const loginURL = `${baseURL}/login`;
 
-const loginLink = document.querySelector('.login-link');
+const loginLink = document.querySelector('#login-link');
 const board = document.querySelector('.board');
+const highScoreboard = document.querySelector('#high-score');
 const scoreboard = document.getElementById('score');
 const turnCounter = document.getElementById('moves-counter');
+const resetButton = document.querySelector('.reset-button')
 const width = 8;
 let cells = [];
 let score = 0;
-let turnCount = 30;
+let turnCount = 10;
 
+localStorage.setItem('highScore', 0)
+let highScore = localStorage.getItem('highScore')
+let token = localStorage.getItem('token')
 
 const spookyIcons = [
     'url(images/candy-corn.png)',
@@ -29,7 +34,7 @@ function createBoard() {
         cell.setAttribute('draggable', true)
         cell.setAttribute('id', i)
         scoreboard.textContent = 0
-        turnCounter.textContent = 30
+        turnCounter.textContent = 10
         let randomSpook = Math.floor(Math.random() * spookyIcons.length)
         cell.style.backgroundImage = spookyIcons[randomSpook]
         board.appendChild(cell)
@@ -45,12 +50,17 @@ let spookBeingReplaced
 let cellIdBeingDragged
 let cellIdBeingReplaced
 
+resetButton.addEventListener('click', newGame)
 cells.forEach(cell => cell.addEventListener('dragstart', dragStart))
 cells.forEach(cell => cell.addEventListener('dragend', dragEnd))
 cells.forEach(cell => cell.addEventListener('dragover', dragOver))
 cells.forEach(cell => cell.addEventListener('dragenter', dragEnter))
 cells.forEach(cell => cell.addEventListener('drop', dragDrop))
 
+function newGame() {
+    board.innerHTML = ''
+    createBoard()
+}
 function dragStart(){
     spookBeingDragged = this.style.backgroundImage
     cellIdBeingDragged = parseInt(this.id)
@@ -181,22 +191,48 @@ function dragEnd() {
         cells[cellIdBeingDragged].style.backgroundImage = spookBeingDragged
     }
 
-    // checksRowFor4()
-    // checksColumnFor4()
-    // checksRowFor3()
-    // checksColumnFor3()
+    checksRowFor4()
+    checksColumnFor4()
+    checksRowFor3()
+    checksColumnFor3()
     decrementTurnCount()
 }
 
 function decrementTurnCount() {
     turnCount -= 1
     turnCounter.innerHTML =`${turnCount}`
+    gameOver(turnCount)
+}
+
+function gameOver(turnCount) {
+    if (turnCount === 0) {
+        board.innerHTML = `
+        <img src="images/game-over.png" alt="Game Over">
+        `
+        if (score > highScore) {
+            highScoreboard.innerHTML = `${score}`
+            localStorage.setItem('highScore', score)
+        }
+    }
 }
 
 window.setInterval(function() {
-    checksRowFor4()
-    checksColumnFor4()
-    checksRowFor3()
-    checksColumnFor3()
+    // checksRowFor4()
+    // checksColumnFor4()
+    // checksRowFor3()
+    // checksColumnFor3()
     dropSpooks()
   }, 50);
+
+
+function setLogin(){
+        if (token === null) {
+            loginLink.innerHTML = `<a href='/login.html'>Login</a>`
+        } else setLogout()
+}
+
+function setLogout(){
+    loginLink.innerHTML = `<a href='/index.html'>Logout</a>`
+}
+
+setLogin()

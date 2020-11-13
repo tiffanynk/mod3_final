@@ -2,7 +2,7 @@ const baseURL = 'http://localhost:3000'
 const loginURL = `${baseURL}/login`;
 
 const login = document.querySelector('.login');
-
+const token = localStorage.getItem('token');
 login.addEventListener('submit', loginUser);
 
 
@@ -32,7 +32,7 @@ function loginUser(event) {
         } else {
             console.log(result)
             localStorage.setItem('token', result.token)
-            window.location.href = '/profile.html'
+            window.location.href = '/index.html'
         }
     })
     .catch(error => {
