@@ -17,7 +17,7 @@
   }
 
 .register {
-    background-color: rgba(40, 1, 60, 0.673);
+    background-color: #996acc;
     width: 100%;
     max-width: 500px;
     padding: 50px 70px;
@@ -41,7 +41,6 @@ div {
 
 h1 {
     font-size: 40px;
-    /* transform: translateX(-180%); */
 }
 
 
