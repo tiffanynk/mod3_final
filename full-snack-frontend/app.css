@@ -8,9 +8,11 @@ body {
     background-image: url('images/monster-match-bg.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position-y: 4em;
     font-family: sans-serif;
     max-width: 100vw;
     max-height: 100vh;
+    color: #282828;
   }
 
 .hidden {
@@ -106,29 +108,30 @@ nav {
     background-repeat: no-repeat;
 }
 
-.high-score-container, .game-data-container {
+.left-side-container, .game-data-container {
     width: 15%;
     align-self: flex-start;
 }
 
-.high-score-container {
-    min-height: 13vh;
+.left-side-container {
+    min-height: 72.5vh;
+    border-radius: 15px;
+    color: #6a6056;
+    /* min-height: 13vh;
     background-color: #996ACC;
     border-radius: 15px;
     text-align: center;
     background-image: linear-gradient(#dbb6ff, #dbb6ff);
     box-shadow: 0 2px 4px #00000080 inset, 0 1px 0 #fff;
     color: #6a6056;
-    align-items: flex-start;
+    align-items: flex-start; */
 }
 .width-100 {
     width: 100%;
 }
 .game-data-container{
     min-height: 72.5vh;
-    /* background-color: #f2b0ff; */
     border-radius: 15px;
-    /* background-image: linear-gradient(#dbb6ff, #dbb6ff); */
     color: #6a6056;
 }
 .game-data {
@@ -137,12 +140,22 @@ nav {
     height: 100%;
     border-radius: 15px;
     background-image: linear-gradient(#dbb6ff, #dbb6ff);
+    opacity: 90%;
 }
-.game-data-moves {
+.game-data-moves, .game-data-turns, .high-scores {
     border-bottom: 2px solid white;
 }
-.game-data-turns {
-    border-top: 2px solid white;
+
+.points-message {
+    box-shadow: 0 2px 4px #00000080 inset, 0 1px 0 #fff;
+    background-image: linear-gradient(#AEE9FD, #7ec7df);
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: 700;
+    color: #292929;
+    opacity: 90%;
 }
 
 #sign-up-button {
@@ -168,4 +181,12 @@ nav {
     border-radius: 8px;
     margin-bottom: .5em;
     box-shadow: 0 1px 2px #00000080 inset, 0 1px 0 #fff;
+}
+
+.game-over-container {
+    height: 60%;
+}
+
+#game-over-image {
+    height: 100%;
 }

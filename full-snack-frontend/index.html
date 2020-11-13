@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="app.css">
-        <title>Full Snax</title>
+        <title>Monster Match!</title>
         <script defer src="index.js"></script>
     </head>
     <body>
@@ -15,9 +15,14 @@
             </div>
         </nav>
         <section class="flex align-center justify-evenly">
-            <div class="flex justify-center high-score-container">
-                <h3>High Score</h3>
-                <h1 id="high-score"></h1>
+            <div class="flex flex-direction-column justify-between align-center left-side-container">
+                <div class="flex flex-direction-column align-center width-100">
+                    <div class="flex flex-direction-column align-center game-data high-scores">
+                        <h3>High Score</h3>
+                        <h1 id="high-score"></h1>
+                    </div>
+                    <div class="flex flex-direction-column align-center points-message hidden"></div>
+                </div>
             </div>
             <div class="flex board"></div>
             <div class="flex flex-direction-column justify-between align-center game-data-container">

@@ -6,6 +6,7 @@ const signUpLink = document.querySelector('.sign-up-link')
 const toggleLogin = document.querySelector('.toggle-login');
 const board = document.querySelector('.board');
 const highScoreboard = document.querySelector('#high-score');
+const pointsMessage = document.querySelector('.points-message');
 const scoreboard = document.getElementById('score');
 const turnCounter = document.getElementById('moves-counter');
 const newGameButton = document.querySelector('.new-game-button')
@@ -193,11 +194,6 @@ function dragEnd() {
     } else {
         cells[cellIdBeingDragged].style.backgroundImage = spookBeingDragged
     }
-
-    checksRowFor4()
-    checksColumnFor4()
-    checksRowFor3()
-    checksColumnFor3()
     decrementTurnCount()
 }
 
@@ -210,7 +206,9 @@ function decrementTurnCount() {
 function gameOver(turnCount) {
     if (turnCount === 0) {
         board.innerHTML = `
-        <img src="images/game-over.png" alt="Game Over">
+        <div class="game-over-container">
+            <img id="game-over-image" src="images/game-over.png" alt="Game Over">
+        </div>
         `
         if (score > highScore) {
             highScoreboard.innerHTML = `${score}`
@@ -220,6 +218,11 @@ function gameOver(turnCount) {
 }
 
 window.setInterval(function() {
+    displayPointsMessage()
+    checksRowFor4()
+    checksColumnFor4()
+    checksRowFor3()
+    checksColumnFor3()
     dropSpooks()
   }, 50);
 
@@ -244,4 +247,13 @@ function setLogout(){
 function logout() {
     localStorage.removeItem('token')
     setLogin()
+}
+
+function displayPointsMessage() {
+    if(turnCount === 10 && score !== 0) {
+        pointsMessage.classList.remove('hidden')
+        pointsMessage.innerHTML = `
+            <p>Looks like you got<br>free matches!</p>
+        `
+    }
 }
